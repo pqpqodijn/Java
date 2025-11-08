@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ✅ 프로젝트 기본 정보 -->
+    <groupId>com.example</groupId>
+    <artifactId>accountbook</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>AccountBook</name>
+
+    <!-- ✅ Spring Boot 버전 설정 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.3</version> <!-- 최신 안정 버전 기준 -->
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- ✅ Java 버전 지정 -->
+    <properties>
+        <java.version>21</java.version> <!-- Upgraded to JDK 21 LTS -->
+    </properties>
+
+    <!-- ✅ 의존성 목록 -->
+    <dependencies>
+
+        <!-- (1) Spring Web : REST API 서버 구축용 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- (2) Spring Data JPA : ORM 기능 제공 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- (3) H2 Database : 로컬 개발용 인메모리 DB -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- (4) Lombok : getter/setter 자동 생성 (선택적) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- (5) SpringDoc OpenAPI (Swagger UI 문서화) -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+        <!-- (6) Validation API : DTO 유효성 검증용 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- (7) JUnit : 단위 테스트용 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <!-- ✅ 빌드 설정 -->
+    <build>
+        <plugins>
+
+            <!-- (1) Spring Boot 플러그인 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- (2) Compiler 설정 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
